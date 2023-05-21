@@ -9,10 +9,11 @@ const bcrypt = require('bcryptjs');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const signupRouter = require('./routes/users');
+const signupRouter = require('./routes/signup');
 const coursesRouter = require('./routes/courses');
-const enrollmentsRouter = require('./routes/enrollment');
-const authMiddleware = require('./middleware/authMiddleware'); 
+const enrollmentsRouter = require('./routes/enrollments');
+const authMiddleware = require('./middleware/authMiddleware');
+const adminRouter = require('./routes/adminRoutes');
 
 const app = express();
 
@@ -64,8 +65,11 @@ app.post('/login', (req, res) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/signup', signupRouter);
-app.use('/api/courses', authMiddleware, coursesRouter); // Apply the authMiddleware here
-app.use('/api/enrollments', authMiddleware, enrollmentsRouter); // Apply the authMiddleware here
+app.use('/api/courses', authMiddleware, coursesRouter);
+app.use('/api/enrollments', authMiddleware, enrollmentsRouter);
+
+// Admin dashboard routes
+app.use('/admin', authMiddleware, adminRouter);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
