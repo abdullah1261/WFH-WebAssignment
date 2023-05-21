@@ -1,0 +1,26 @@
+/* courses.css */
+
+.available-courses {
+    margin-top: 20px;
+  }
+  
+  .course {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .course h4 {
+    margin: 0;
+  }
+  
+  .course p {
+    margin-top: 5px;
+  }
+  
+  .course-description {
+    font-style: italic;
+    color: #888;
+  }
+  
